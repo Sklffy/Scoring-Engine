@@ -1,0 +1,19 @@
+{
+  "teams": [
+    {
+      "name": "Poseidon's Wrath",
+      "score": 850,
+      "status": "Up"
+    },
+    {
+      "name": "Triton Squad",
+      "score": 770,
+      "status": "Down"
+    },
+    {
+      "name": "Kraken Crew",
+      "score": 540,
+      "status": "SLA Breach"
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+body {
+  background-color: #0d1b2a;
+  color: #e0f7fa;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+  padding: 2rem;
+  margin: 0;
+}
+
+.container {
+  max-width: 800px;
+  margin: auto;
+}
+
+.logo {
+  width: 200px;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 3rem;
+  color: #00bcd4;
+  text-shadow: 0 0 10px #00bcd4;
+}
+
+.tagline {
+  font-size: 1.2rem;
+  color: #b2ebf2;
+  margin-bottom: 2rem;
+}
+
+.scoreboard {
+  background: #1e3d59;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 188, 212, 0.4);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  color: #e0f7fa;
+  font-size: 1rem;
+}
+
+th, td {
+  padding: 1rem;
+  border-bottom: 1px solid #00bcd4;
+}
+
+th {
+  text-align: left;
+  color: #00e5ff;
+  font-size: 1.1rem;
+}
+
+.status.up {
+  color: #00ff90;
+}
+
+.status.down {
+  color: #ff5c5c;
+}
+
+.status.sla {
+  color: #ffc107;
+}
