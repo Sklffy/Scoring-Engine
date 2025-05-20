@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ATLANTIS Scoreboard - Status View</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+  <img src="ATLANTIS.png" alt="ATLANTIS Logo" id="logo">
+  <h1>ATLANTIS SCOREBOARD</h1>
+
+  <h2>Status</h2>
+  <table id="statusTable" class="score-table">
+    <thead>
+      <tr>
+        <th>Team</th>
+        <th>DNS</th>
+        <th>FTP</th>
+        <th>SSH</th>
+        <th>HTTP</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <h2>Uptime</h2>
+  <table id="uptimeTable" class="score-table">
+    <thead>
+      <tr>
+        <th>Team</th>
+        <th>DNS</th>
+        <th>FTP</th>
+        <th>SSH</th>
+        <th>HTTP</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <h2>Injects</h2>
+  <table id="injectTable" class="inject-table">
+    <thead>
+      <tr>
+        <th>Posted</th>
+        <th>Inject Title</th>
+        <th>Due</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script>
+    async function loadStatus() {
+      const res = await fetch("scores.json");
+      const data = await res.json();
+
+      const statusBody = document.querySelector("#statusTable tbody");
+      const uptimeBody = document.querySelector("#uptimeTable tbody");
+      statusBody.innerHTML = "";
+      uptimeBody.innerHTML = "";
+
+      data.teams.forEach(team => {
+        const sRow = document.createElement("tr");
+        const uRow = document.createElement("tr");
+
+        sRow.innerHTML = `<td>${team.name}</td>`;
+        uRow.innerHTML = `<td>${team.name}</td>`;
+
+        ["dns", "ftp", "ssh", "http"].forEach(svc => {
+          const sStatus = team.status[svc] || "unknown";
+          const uptime = team.uptime[svc] || 0;
+
+          sRow.innerHTML += `<td class="${sStatus}">${sStatus.toUpperCase()}</td>`;
+          uRow.innerHTML += `<td>${uptime}%</td>`;
+        });
+
+        statusBody.appendChild(sRow);
+        uptimeBody.appendChild(uRow);
+      });
+    }
+
+    async function loadInjects() {
+      const res = await fetch("injects.json");
+      const data = await res.json();
+      const injectBody = document.querySelector("#injectTable tbody");
+      injectBody.innerHTML = "";
+
+      data.injects.forEach(inject => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${inject.posted}</td>
+          <td>${inject.title}</td>
+          <td>${inject.due}</td>
+          <td>${inject.status}</td>
+          <td><button onclick="alert('Inject ${inject.id} submitted!')">Submit</button></td>
+        `;
+        injectBody.appendChild(row);
+      });
+    }
+
+    setInterval(() => {
+      loadStatus();
+      loadInjects();
+    }, 3000);
+
+    loadStatus();
+    loadInjects();
+  </script>
+</body>
+</html>

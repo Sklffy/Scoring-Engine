@@ -4,19 +4,18 @@
     {
       "label": "build atlantis",
       "type": "shell",
-      "command": "C:/msys64/mingw64/bin/g++.exe",
+      "command": "g++",
       "args": [
         "-std=c++17",
         "-o",
-        "atlantis.exe",
-        "src/main.cpp"
+        "${workspaceFolder}/atlantis.exe",
+        "${workspaceFolder}/src/main.cpp"
       ],
       "group": {
         "kind": "build",
         "isDefault": true
       },
-      "problemMatcher": ["$gcc"],
-      "detail": "Compiles the ATLANTIS backend"
+      "problemMatcher": ["$gcc"]
     }
   ]
 }

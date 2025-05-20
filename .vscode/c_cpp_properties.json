@@ -3,13 +3,9 @@
     {
       "name": "Win32",
       "includePath": [
-        "${workspaceFolder}/**",
-        "C:/msys64/mingw64/include/c++/13.1.6",   // Replace with your actual version
-        "C:/msys64/mingw64/include",
-        "C:/msys64/mingw64/include/c++/13.1.6/x86_64-w64-mingw32", // Platform-specific
-        "C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/13.1.6/include"
+        "${workspaceFolder}/**"
       ],
-      "compilerPath": "C:/msys64/mingw64/bin/g++.exe",
+      "compilerPath": "C:/Users/jdgei/Downloads/winlibs-i686-posix-dwarf-gcc-15.1.0-mingw-w64ucrt-12.0.0-r1/mingw32/bin/g++.exe",
       "cStandard": "c11",
       "cppStandard": "c++17",
       "intelliSenseMode": "windows-gcc-x64"

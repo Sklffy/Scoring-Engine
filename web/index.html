@@ -4,81 +4,69 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>ATLANTIS Scoreboard</title>
-  <style>
-    body {
-      background-color: #081828;
-      color: #00f9ff;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      text-align: center;
-      padding: 1em;
-    }
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5em;
-      text-shadow: 0 0 10px #00f9ff;
-    }
-    #lastUpdated {
-      margin-bottom: 1em;
-      color: #a0cfdc;
-      font-style: italic;
-    }
-    .team {
-      margin: 0.5em auto;
-      padding: 1em;
-      max-width: 600px;
-      border-radius: 10px;
-      font-size: 1.2rem;
-      font-weight: bold;
-      box-shadow: 0 0 5px #00f9ff33;
-    }
-    .Up {
-      background-color: #003300;
-      color: #00ff88;
-    }
-    .Down {
-      background-color: #330000;
-      color: #ff4f4f;
-    }
-    .Offline {
-      background-color: #222;
-      color: #888;
-    }
-  </style>
+
+  <!-- Favicon icon -->
+  <link rel="icon" type="image/png" href="favicon.png" />
+
+  <!-- External stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <h1>🌊 ATLANTIS SCOREBOARD</h1>
-  <div id="lastUpdated">Connecting to backend...</div>
-  <div id="teams">Loading...</div>
+  <!-- Logo -->
+  <img src="ATLANTIS.png" alt="ATLANTIS Logo" id="logo" />
 
-  <script>
-    async function fetchScores() {
-      try {
-        const res = await fetch("scores.json?_=" + new Date().getTime()); // avoid caching
-        const data = await res.json();
+  <!-- Title -->
+  <h1>ATLANTIS SCOREBOARD</h1>
 
-        const teamsDiv = document.getElementById("teams");
-        const lastDiv = document.getElementById("lastUpdated");
-        teamsDiv.innerHTML = "";
+<!-- Dynamic team scores -->
+<div id="teams">Loading...</div>
 
-        const dt = new Date(data.lastUpdated * 1000);
-        lastDiv.innerText = "📡 Last updated: " + dt.toLocaleString();
+<!-- Button to go to full status view -->
+<div style="margin-top: 2rem;">
+  <a href="status.html">
+    <button>View Full Status Grid</button>
+  </a>
+</div>
 
-        data.teams.forEach(team => {
-          const div = document.createElement("div");
-          div.className = "team " + team.status;
-          div.innerText = `${team.name} | Score: ${team.score} | Status: ${team.status} | Uptime: ${team.uptime}s`;
-          teamsDiv.appendChild(div);
-        });
+<!-- JavaScript to fetch and update scores -->
+<script>
+  async function fetchScores() {
+    try {
+      const res = await fetch("scores.json?_=" + new Date().getTime());
+      if (!res.ok) throw new Error("Failed to fetch scores.json");
 
-      } catch (err) {
-        document.getElementById("lastUpdated").innerText = "⚠️ Failed to load scores.";
-        console.error("Fetch error:", err);
+      const data = await res.json();
+
+      const teamsDiv = document.getElementById("teams");
+      const lastDiv = document.getElementById("lastUpdated");
+      teamsDiv.innerHTML = "";
+
+      if (!data.teams || !Array.isArray(data.teams)) {
+        throw new Error("Malformed JSON: missing 'teams' array");
       }
-    }
 
-    // Auto-refresh every 3 seconds
-    setInterval(fetchScores, 3000);
-    fetchScores();
-  </script>
+      const dt = new Date(data.lastUpdated * 1000 || Date.now());
+      lastDiv.innerText = "Last updated: " + dt.toLocaleString();
+
+      if (data.teams.length === 0) {
+        teamsDiv.innerHTML = "<div class='team Offline'>No teams reported yet.</div>";
+      }
+
+      data.teams.forEach(team => {
+        const div = document.createElement("div");
+        div.className = "team " + (team.status || "Offline");
+        div.innerText = `${team.name} | Score: ${team.score} | Status: ${team.status} | Uptime: ${team.uptime}s`;
+        teamsDiv.appendChild(div);
+      });
+
+    } catch (err) {
+      document.getElementById("lastUpdated").innerText = "⚠️ Failed to load scores.";
+      console.error("Fetch error:", err);
+    }
+  }
+
+  setInterval(fetchScores, 3000);
+  fetchScores();
+</script>
 </body>
 </html>

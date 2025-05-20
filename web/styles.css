@@ -1,5 +1,6 @@
+/* Atlantis Glowing Theme */
 body {
-  background-color: #0d1b2a;
+  background-color: #081828;
   color: #e0f7fa;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   text-align: center;
@@ -7,61 +8,83 @@ body {
   margin: 0;
 }
 
-.container {
-  max-width: 800px;
-  margin: auto;
-}
-
-.logo {
-  width: 200px;
-  margin-bottom: 20px;
+#logo {
+  width: 150px;
+  margin-bottom: 10px;
 }
 
 h1 {
-  font-size: 3rem;
-  color: #00bcd4;
-  text-shadow: 0 0 10px #00bcd4;
+  font-size: 2.5rem;
+  color: #00f9ff;
+  text-shadow: 0 0 15px #00f9ff;
+  margin-bottom: 1.5rem;
 }
 
-.tagline {
-  font-size: 1.2rem;
-  color: #b2ebf2;
-  margin-bottom: 2rem;
-}
-
-.scoreboard {
-  background: #1e3d59;
-  padding: 1.5rem;
-  border-radius: 10px;
-  box-shadow: 0 0 15px rgba(0, 188, 212, 0.4);
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  color: #e0f7fa;
-  font-size: 1rem;
-}
-
-th, td {
-  padding: 1rem;
-  border-bottom: 1px solid #00bcd4;
-}
-
-th {
-  text-align: left;
+h2 {
   color: #00e5ff;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 10px #00e5ff;
+}
+
+.score-table,
+.inject-table {
+  width: 90%;
+  margin: 0 auto 2rem auto;
+  border-collapse: collapse;
+  box-shadow: 0 0 10px rgba(0, 249, 255, 0.3);
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #112233;
+}
+
+.score-table th,
+.score-table td,
+.inject-table th,
+.inject-table td {
+  padding: 1rem;
+  border: 1px solid #00bcd4;
+  color: #e0f7fa;
+}
+
+.score-table th,
+.inject-table th {
+  background-color: #02131f;
   font-size: 1.1rem;
+  color: #00e5ff;
+  text-shadow: 0 0 5px #00e5ff;
 }
 
-.status.up {
+.score-table td.up {
+  background-color: #004d40;
   color: #00ff90;
+  font-weight: bold;
 }
 
-.status.down {
-  color: #ff5c5c;
+.score-table td.down {
+  background-color: #4d0000;
+  color: #ff4f4f;
+  font-weight: bold;
 }
 
-.status.sla {
-  color: #ffc107;
+.score-table td.unknown {
+  background-color: #333;
+  color: #bbb;
+  font-style: italic;
+}
+
+button {
+  background-color: #00bcd4;
+  border: none;
+  color: #081828;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+button:hover {
+  background-color: #00f9ff;
+  box-shadow: 0 0 10px #00f9ff;
 }

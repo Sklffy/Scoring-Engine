@@ -18,4 +18,4 @@ g++ -o atlantis main.cpp
 =======
 # Atlantis
 Scoreboard
->>>>>>> 4719ead5921635517e38def87728dbeef7c89f5f
+
