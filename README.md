@@ -13,9 +13,9 @@ A mythic, C++-powered scoring engine for cyber competitions.
 
 ## Build
 ```bash
-g++ -o atlantis main.cpp
+g++ -std=c++17 -o atlantis.exe src/main.cpp
 ./atlantis
-=======
+==========
 # Atlantis
 Scoreboard
 
