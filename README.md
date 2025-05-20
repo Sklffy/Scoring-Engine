@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🌊 ATLANTIS Scoreboard
 
 A mythic, C++-powered scoring engine for cyber competitions.
@@ -15,3 +16,7 @@ A mythic, C++-powered scoring engine for cyber competitions.
 ```bash
 g++ -o atlantis main.cpp
 ./atlantis
+=======
+# Atlantis
+Scoreboard
+>>>>>>> 4719ead5921635517e38def87728dbeef7c89f5f
