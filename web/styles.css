@@ -412,3 +412,28 @@ button:hover {
   background-color: #00a8b8;
 }
 
+.info-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: #0b1e2e;
+  padding: 1.5rem 2rem;
+  margin: 2rem auto;
+  max-width: 600px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px #00f9ff44;
+  color: #ccefff;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.1rem;
+}
+
+.info-item i {
+  color: #00f9ff;
+  font-size: 1.2rem;
+  min-width: 24px;
+}

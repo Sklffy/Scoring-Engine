@@ -1,3 +1,7 @@
+/**
+ * The JavaScript code includes functions to fetch and display team scores, injects, and a timer for an
+ * event start time in Eastern Time.
+ */
 // scripts.js
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -90,8 +94,57 @@ function handleInjectSubmit(event, injectId) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  if (document.querySelector("#injectTable")) {
-    loadInjects();
+  if (document.getElementById("eventTime")) {
+    updateEventTimer();
+    setInterval(updateEventTimer, 1000);
+  }
+
+  if (document.getElementById("lastCheck")) {
+    updateLastCheck();
+    setInterval(updateLastCheck, 1000);
   }
 });
 
+
+  // Force the event start time to be interpreted in Eastern Time
+  const eventStartTime = new Date("2025-05-21T09:00:00-04:00"); // -04:00 for EDT (Daylight), -05:00 for EST
+
+  function updateEventTimer() {
+    const now = new Date(); // User’s local time
+const estNow = new Date(
+  new Intl.DateTimeFormat("en-US", {
+    timeZone: "America/New_York",
+    hour12: false,
+    year: "numeric", month: "2-digit", day: "2-digit",
+    hour: "2-digit", minute: "2-digit", second: "2-digit"
+  }).format(new Date())
+);
+
+    const diff = Math.max(0, estNow - eventStartTime);
+
+    const hours = String(Math.floor(diff / 3600000)).padStart(2, "0");
+    const minutes = String(Math.floor((diff % 3600000) / 60000)).padStart(2, "0");
+    const seconds = String(Math.floor((diff % 60000) / 1000)).padStart(2, "0");
+
+    document.getElementById("eventTime").textContent = `${hours}:${minutes}:${seconds}`;
+  }
+
+  updateEventTimer();
+  setInterval(updateEventTimer, 1000);
+
+  function updateLastCheck() {
+  const now = new Date();
+
+  const estString = new Intl.DateTimeFormat("en-US", {
+    timeZone: "America/New_York",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: true
+  }).format(now);
+
+  const lastCheckEl = document.getElementById("lastCheck");
+  if (lastCheckEl) {
+    lastCheckEl.textContent = estString;
+  }
+}

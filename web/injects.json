@@ -3,29 +3,29 @@
     {
       "id": 1,
       "title": "Patch OpenSSL Vulnerability",
-      "posted": "01:30 PM",
-      "due": "02:30 PM",
+      "posted": "2025-05-21T13:30:00-04:00",
+      "due": "2025-05-21T14:30:00-04:00",
       "status": "Open"
     },
     {
       "id": 2,
       "title": "Submit Incident Report",
-      "posted": "01:45 PM",
-      "due": "03:00 PM",
+      "posted": "2025-05-21T13:45:00-04:00",
+      "due": "2025-05-21T15:00:00-04:00",
       "status": "Open"
     },
     {
       "id": 3,
-      "posted": "14:36",
       "title": "Management Request",
-      "due": "16:00",
+      "posted": "2025-05-21T14:36:00-04:00",
+      "due": "2025-05-21T16:00:00-04:00",
       "status": "Open"
     },
     {
       "id": 4,
-      "posted": "15:10",
       "title": "VPN Lockdown",
-      "due": "17:00",
+      "posted": "2025-05-21T15:10:00-04:00",
+      "due": "2025-05-21T17:00:00-04:00",
       "status": "Open"
     }
   ]

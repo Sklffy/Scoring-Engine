@@ -23,7 +23,6 @@
     <a href="about.html"><i class="fas fa-circle-info"></i> About</a>
     <a href="status.html"><i class="fas fa-server"></i> Status</a>
     <a href="injects.html"><i class="fas fa-bolt"></i> Injects</a>
-    <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
     <a href="admin.html"><i class="fas fa-lock"></i> Admin</a>
   </div>
 </nav>
@@ -37,17 +36,26 @@
     <!-- Title -->
     <h1>ATLANTIS SCOREBOARD</h1>
 
-    <!-- Info Panel -->
-    <div class="info-panel">
-      <i class="fas fa-trophy"></i>
-      <p>Total Teams: <strong id="teamCount"> 2</strong></p>
-      <i class="fas fa-check-square"></i>
-      <p>Last Check: <strong id="lastCheck"> 9:41:57 AM</strong></p>
-      <i class="fas fa-hourglass-half"></i>
-      <p>Event Running Time: <strong id="eventTime"> 00:00:05</strong></p>
-      <i class="fas fa-scroll"></i>
-      <p><strong>Latest Inject:</strong> <span id="latestInject"> VPN Lockdown (Due: 17:00)</span></p>
-    </div>
+<!-- Info Panel -->
+<div class="info-panel">
+  <div class="info-item">
+    <i class="fas fa-trophy"></i>
+    <span>Total Teams: <strong id="teamCount">2</strong></span>
+  </div>
+  <div class="info-item">
+    <i class="fas fa-check-square"></i>
+    <span>Last Check: <strong id="lastCheck">9:41:57 AM</strong></span>
+  </div>
+  <div class="info-item">
+    <i class="fas fa-hourglass-half"></i>
+    <span>Event Running Time: <strong id="eventTime">00:00:05</strong></span>
+  </div>
+  <div class="info-item">
+    <i class="fas fa-scroll"></i>
+    <span><strong>Latest Inject:</strong> <span id="latestInject">VPN Lockdown (Due: 17:00)</span></span>
+  </div>
+</div>
+
   </div>
   <footer>
     <p>&copy; 2025 Jonathan Geisler. All rights reserved.</p>

@@ -1,150 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ATLANTIS Scoreboard - Status View</title>
-  <link rel="stylesheet" href="styles.css">
-  <link rel="icon" type="image/png" href="favicon.png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Login - ATLANTIS</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="favicon.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
-    .nav-header {
-      background-color: #0d1b2a;
-      padding: 1rem;
+    body {
       display: flex;
-      justify-content: flex-end;
-      border-bottom: 1px solid #00f9ff44;
-    }
-    .nav-header a {
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #081828;
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       color: #00f9ff;
-      text-decoration: none;
-      margin-left: 2rem;
-      font-size: 0.9rem;
     }
-    .nav-header a:hover {
-      text-decoration: underline;
+    .login-container {
+      background: #0a1e30;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 25px #00f9ff44;
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+    }
+    .login-container h2 {
+      margin-bottom: 1.5rem;
+      font-size: 1.75rem;
+      color: #00f9ff;
+      text-shadow: 0 0 10px #00f9ff88;
+    }
+    .login-container input {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: none;
+      border-radius: 8px;
+      background-color: #112a40;
+      color: #00f9ff;
+      font-size: 1rem;
+    }
+    .login-container button {
+      background-color: #00f9ff;
+      border: none;
+      color: #081828;
+      padding: 0.75rem 1.25rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .login-container button:hover {
+      background-color: #00cfe3;
+    }
+    .login-container .icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #00f9ff;
     }
   </style>
 </head>
 <body>
-<!-- Font Awesome CDN -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-
-<!-- Navigation Bar -->
-<nav class="navbar">
-  <div class="nav-left">
-    <i class="fas fa-water"></i> <span class="brand-name">ATLANTIS</span>
+  <div class="login-container">
+    <h2><i class="fas fa-lock"></i> Admin Login</h2>
+    <form onsubmit="return validateLogin(event)">
+      <input type="text" id="username" placeholder="Username" required />
+      <input type="password" id="password" placeholder="Password" required />
+      <button type="submit">Login</button>
+      <p id="error" class="error"></p>
+    </form>
   </div>
-  <div class="nav-links">
-    <a href="index.html"><i class="fas fa-home"></i> Home</a>
-    <a href="about.html"><i class="fas fa-circle-info"></i> About</a>
-    <a href="status.html"><i class="fas fa-server"></i> Status</a>
-    <a href="injects.html"><i class="fas fa-bolt"></i> Injects</a>
-    <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
-    <a href="admin.html"><i class="fas fa-lock"></i> Admin</a>
-  </div>
-</nav>
+    <script>
+    function validateLogin(e) {
+      e.preventDefault();
+      const user = document.getElementById("username").value.trim();
+      const pass = document.getElementById("password").value;
 
-  <img src="ATLANTIS.png" alt="ATLANTIS Logo" id="logo">
-  <h1>ATLANTIS SCOREBOARD</h1>
-
-  <h2>Status</h2>
-  <table id="statusTable" class="score-table">
-    <thead>
-      <tr>
-        <th>Team</th>
-        <th>DNS</th>
-        <th>FTP</th>
-        <th>SSH</th>
-        <th>HTTP</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  </table>
-
-  <h2>Uptime</h2>
-  <table id="uptimeTable" class="score-table">
-    <thead>
-      <tr>
-        <th>Team</th>
-        <th>DNS</th>
-        <th>FTP</th>
-        <th>SSH</th>
-        <th>HTTP</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  </table>
-
-  <h2>Injects</h2>
-  <table id="injectTable" class="inject-table">
-    <thead>
-      <tr>
-        <th>Posted</th>
-        <th>Inject Title</th>
-        <th>Due</th>
-        <th>Status</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  </table>
-
-  <script>
-    async function loadStatus() {
-      const res = await fetch("scores.json");
-      const data = await res.json();
-
-      const statusBody = document.querySelector("#statusTable tbody");
-      const uptimeBody = document.querySelector("#uptimeTable tbody");
-      statusBody.innerHTML = "";
-      uptimeBody.innerHTML = "";
-
-      data.teams.forEach(team => {
-        const sRow = document.createElement("tr");
-        const uRow = document.createElement("tr");
-
-        sRow.innerHTML = `<td>${team.name}</td>`;
-        uRow.innerHTML = `<td>${team.name}</td>`;
-
-        ["dns", "ftp", "ssh", "http"].forEach(svc => {
-          const sStatus = team.status[svc] || "unknown";
-          const uptime = team.uptime[svc] || 0;
-
-          sRow.innerHTML += `<td class="${sStatus}">${sStatus.toUpperCase()}</td>`;
-          uRow.innerHTML += `<td>${uptime}%</td>`;
-        });
-
-        statusBody.appendChild(sRow);
-        uptimeBody.appendChild(uRow);
-      });
+      if (user === "admin" && pass === "root") {
+        window.location.href = "adminloggedin.html";
+      } else {
+        document.getElementById("error").textContent = "Invalid username or password.";
+      }
+      return false;
     }
-
-    async function loadInjects() {
-      const res = await fetch("injects.json");
-      const data = await res.json();
-      const injectBody = document.querySelector("#injectTable tbody");
-      injectBody.innerHTML = "";
-
-      data.injects.forEach(inject => {
-        const row = document.createElement("tr");
-        row.innerHTML = `
-          <td>${inject.posted}</td>
-          <td>${inject.title}</td>
-          <td>${inject.due}</td>
-          <td>${inject.status}</td>
-          <td><button onclick="alert('Inject ${inject.id} submitted!')">Submit</button></td>
-        `;
-        injectBody.appendChild(row);
-      });
-    }
-
-    setInterval(() => {
-      loadStatus();
-      loadInjects();
-    }, 3000);
-
-    loadStatus();
-    loadInjects();
   </script>
 </body>
 </html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel - ATLANTIS Scoreboard</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    .editable {
+      background-color: #112233;
+      border: 1px dashed #00f9ff;
+      color: #00f9ff;
+      padding: 0.25rem;
+    }
+    .editable:focus {
+      outline: 2px solid #00f9ff;
+    }
+    .admin-controls {
+      margin: 2rem auto;
+      max-width: 800px;
+      text-align: center;
+    }
+    .admin-controls button {
+      background: #00f9ff;
+      color: #000;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      margin: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav class="navbar">
+  <div class="nav-left">
+    <i class="fas fa-water"></i> <span class="brand-name">ATLANTIS</span>
+  </div>
+  <div class="nav-links">
+    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+    <a href="about.html"><i class="fas fa-circle-info"></i> About</a>
+    <a href="status.html"><i class="fas fa-server"></i> Status</a>
+    <a href="injects.html"><i class="fas fa-bolt"></i> Injects</a>
+    <a href="admin.html" class="active"><i class="fas fa-lock"></i> Admin</a>
+  </div>
+</nav>
+
+<!-- Logo + Title -->
+<img src="ATLANTIS.png" alt="ATLANTIS Logo" id="logo" />
+<h1>Admin Panel</h1>
+
+<!-- Controls -->
+<div class="admin-controls">
+  <button onclick="saveChanges()"><i class="fas fa-save"></i> Save Scores</button>
+  <button onclick="window.location.href='injects.html'"><i class="fas fa-bolt"></i> Manage Injects</button>
+</div>
+
+<!-- Status Section -->
+<h2>Status</h2>
+<table id="statusTable" class="score-table">
+  <thead>
+    <tr>
+      <th>Team</th>
+      <th>DNS</th>
+      <th>FTP</th>
+      <th>SSH</th>
+      <th>HTTP</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Red Team</td>
+      <td contenteditable="true" class="editable">UNKNOWN</td>
+      <td contenteditable="true" class="editable">UNKNOWN</td>
+      <td contenteditable="true" class="editable">UNKNOWN</td>
+      <td contenteditable="true" class="editable">UNKNOWN</td>
+    </tr>
+    <tr>
+      <td>Blue Team</td>
+      <td contenteditable="true" class="editable">UNKNOWN</td>
+      <td contenteditable="true" class="editable">UNKNOWN</td>
+      <td contenteditable="true" class="editable">UNKNOWN</td>
+      <td contenteditable="true" class="editable">UNKNOWN</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Uptime Section -->
+<h2>Uptime</h2>
+<table id="uptimeTable" class="score-table">
+  <thead>
+    <tr>
+      <th>Team</th>
+      <th>DNS</th>
+      <th>FTP</th>
+      <th>SSH</th>
+      <th>HTTP</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Red Team</td>
+      <td contenteditable="true" class="editable">0%</td>
+      <td contenteditable="true" class="editable">0%</td>
+      <td contenteditable="true" class="editable">0%</td>
+      <td contenteditable="true" class="editable">0%</td>
+    </tr>
+    <tr>
+      <td>Blue Team</td>
+      <td contenteditable="true" class="editable">0%</td>
+      <td contenteditable="true" class="editable">0%</td>
+      <td contenteditable="true" class="editable">0%</td>
+      <td contenteditable="true" class="editable">0%</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Injects Table -->
+<h2>Injects</h2>
+<table class="inject-table">
+  <thead>
+    <tr>
+      <th>Posted</th>
+      <th>Inject Title</th>
+      <th>Due</th>
+      <th>Status</th>
+      <th>Score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>01:30 PM</td>
+      <td>Patch OpenSSL</td>
+      <td>02:30 PM</td>
+      <td contenteditable="true" class="editable">Open</td>
+      <td contenteditable="true" class="editable">10</td>
+    </tr>
+    <tr>
+      <td>01:45 PM</td>
+      <td>Incident Report</td>
+      <td>03:00 PM</td>
+      <td contenteditable="true" class="editable">Open</td>
+      <td contenteditable="true" class="editable">15</td>
+    </tr>
+  </tbody>
+</table>
+
+<script>
+  function saveChanges() {
+    alert("Scores and injects updated (simulation).");
+    // You could add real logic here to POST data to a server or update JSON
+  }
+</script>
+
+<footer>
+  <p>&copy; 2025 Jonathan Geisler. Admin Portal.</p>
+</footer>
+</body>
+</html>
