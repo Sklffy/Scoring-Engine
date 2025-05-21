@@ -1,17 +1,34 @@
 {
-    "lastUpdated": 1747765613,
-    "teams": [
-        {
-            "name": "Red Team",
-            "score": null,
-            "status": "Offline",
-            "uptime": 0
-        },
-        {
-            "name": "Blue Team",
-            "score": 10,
-            "status": "Up",
-            "uptime": 300
-        }
-    ]
+  "teams": [
+    {
+      "name": "Blue Team 1",
+      "status": {
+        "dns": "down",
+        "ftp": "up",
+        "ssh": "down",
+        "http": "up"
+      },
+      "uptime": {
+        "dns": 0,
+        "ftp": 100,
+        "ssh": 0,
+        "http": 100
+      }
+    },
+    {
+      "name": "Blue Team 2",
+      "status": {
+        "dns": "up",
+        "ftp": "up",
+        "ssh": "up",
+        "http": "down"
+      },
+      "uptime": {
+        "dns": 99,
+        "ftp": 99,
+        "ssh": 99,
+        "http": 65
+      }
+    }
+  ]
 }

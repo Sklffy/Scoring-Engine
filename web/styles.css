@@ -88,3 +88,47 @@ button:hover {
   background-color: #00f9ff;
   box-shadow: 0 0 10px #00f9ff;
 }
+
+.small-logo {
+  width: 220px;
+  max-width: 80%;
+  margin: 2rem auto 1rem;
+  display: block;
+}
+
+.centered {
+  max-width: 960px;
+  margin: auto;
+  text-align: center;
+}
+
+/* Limit logo size on all pages */
+.logo {
+  width: 200px;
+  margin: 20px auto;
+  display: block;
+}
+
+/* Style nav links correctly */
+.topnav {
+  background-color: #0d1b2a;
+  overflow: hidden;
+  padding: 1rem;
+  text-align: center;
+}
+
+.topnav a {
+  color: #00f9ff;
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: bold;
+}
+
+.topnav a:hover {
+  text-decoration: underline;
+}
+
+.topnav a.active {
+  color: #00ffff;
+  border-bottom: 2px solid #00f9ff;
+}

@@ -2,71 +2,28 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ATLANTIS Scoreboard</title>
-
-  <!-- Favicon icon -->
-  <link rel="icon" type="image/png" href="favicon.png" />
-
-  <!-- External stylesheet -->
   <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="favicon.png" />
 </head>
 <body>
-  <!-- Logo -->
-  <img src="ATLANTIS.png" alt="ATLANTIS Logo" id="logo" />
+  <!-- Main Content Wrapper -->
+  <div class="centered">
+    <!-- Logo -->
+    <img src="ATLANTIS.png" alt="ATLANTIS Logo" class="logo small-logo" />
 
-  <!-- Title -->
-  <h1>ATLANTIS SCOREBOARD</h1>
+    <!-- Title -->
+    <h1>ATLANTIS SCOREBOARD</h1>
 
-<!-- Dynamic team scores -->
-<div id="teams">Loading...</div>
+    <!-- Navigation Buttons -->
+    <div class="hub-buttons">
+      <a href="status.html"><button>View Status Grid</button></a>
+      <a href="injects.html"><button>Manage Injects</button></a>
+      <a href="settings.html"><button>System Settings</button></a>
+      <a href="admin.html"><button>Admin Panel</button></a>
+  </div>
 
-<!-- Button to go to full status view -->
-<div style="margin-top: 2rem;">
-  <a href="status.html">
-    <button>View Full Status Grid</button>
-  </a>
-</div>
-
-<!-- JavaScript to fetch and update scores -->
-<script>
-  async function fetchScores() {
-    try {
-      const res = await fetch("scores.json?_=" + new Date().getTime());
-      if (!res.ok) throw new Error("Failed to fetch scores.json");
-
-      const data = await res.json();
-
-      const teamsDiv = document.getElementById("teams");
-      const lastDiv = document.getElementById("lastUpdated");
-      teamsDiv.innerHTML = "";
-
-      if (!data.teams || !Array.isArray(data.teams)) {
-        throw new Error("Malformed JSON: missing 'teams' array");
-      }
-
-      const dt = new Date(data.lastUpdated * 1000 || Date.now());
-      lastDiv.innerText = "Last updated: " + dt.toLocaleString();
-
-      if (data.teams.length === 0) {
-        teamsDiv.innerHTML = "<div class='team Offline'>No teams reported yet.</div>";
-      }
-
-      data.teams.forEach(team => {
-        const div = document.createElement("div");
-        div.className = "team " + (team.status || "Offline");
-        div.innerText = `${team.name} | Score: ${team.score} | Status: ${team.status} | Uptime: ${team.uptime}s`;
-        teamsDiv.appendChild(div);
-      });
-
-    } catch (err) {
-      document.getElementById("lastUpdated").innerText = "⚠️ Failed to load scores.";
-      console.error("Fetch error:", err);
-    }
-  }
-
-  setInterval(fetchScores, 3000);
-  fetchScores();
-</script>
+  <script src="scripts/scripts.js"></script>
 </body>
 </html>

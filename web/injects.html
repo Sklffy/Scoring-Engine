@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Injects - ATLANTIS Scoreboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="favicon.png" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Top Navigation Bar -->
+  <div class="topnav">
+    <a href="index.html">Home</a>
+    <a href="status.html">Status</a>
+    <a href="injects.html" class="active">Injects</a>
+    <a href="settings.html">Settings</a>
+    <a href="admin.html">Admin</a>
+  </div>
+
+  <!-- Logo and Title -->
+  <img src="ATLANTIS.png" alt="ATLANTIS Logo" class="logo" />
+  <h1>Inject Feed</h1>
+
+  <!-- Injects Table -->
+  <table class="inject-table">
+    <thead>
+      <tr>
+        <th>Posted</th>
+        <th>Title</th>
+        <th>Due</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody id="injectTable">
+      <!-- Content loaded by scripts.js -->
+    </tbody>
+  </table>
+
+  <script src="scripts/scripts.js"></script>
+</body>
+</html>
