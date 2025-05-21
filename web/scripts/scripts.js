@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
         `).join('');
       })
       .catch(() => {
-        teamsDiv.textContent = "⚠️ Failed to load scores.";
+        teamsDiv.textContent = "Failed to load scores.";
       });
   }
 

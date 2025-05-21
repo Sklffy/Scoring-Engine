@@ -6,8 +6,29 @@
   <title>ATLANTIS Scoreboard</title>
   <link rel="stylesheet" href="styles.css" />
   <link rel="icon" href="favicon.png" />
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
+  
+<!-- Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+<!-- Navigation Bar -->
+<nav class="navbar">
+  <div class="nav-left">
+    <i class="fas fa-water"></i> <span class="brand-name">ATLANTIS</span>
+  </div>
+  <div class="nav-links">
+    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+    <a href="about.html"><i class="fas fa-circle-info"></i> About</a>
+    <a href="status.html"><i class="fas fa-server"></i> Status</a>
+    <a href="injects.html"><i class="fas fa-bolt"></i> Injects</a>
+    <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+    <a href="admin.html"><i class="fas fa-lock"></i> Admin</a>
+  </div>
+</nav>
+
+
   <!-- Main Content Wrapper -->
   <div class="centered">
     <!-- Logo -->
@@ -16,13 +37,26 @@
     <!-- Title -->
     <h1>ATLANTIS SCOREBOARD</h1>
 
-    <!-- Navigation Buttons -->
-    <div class="hub-buttons">
-      <a href="status.html"><button>View Status Grid</button></a>
-      <a href="injects.html"><button>Manage Injects</button></a>
-      <a href="settings.html"><button>System Settings</button></a>
-      <a href="admin.html"><button>Admin Panel</button></a>
+    <!-- Info Panel -->
+<div class="info-panel">
+  <i class="fas fa-trophy"></i>
+  <p>Total Teams: <strong id="teamCount "> 2</strong></p>
+
+  <i class="fas fa-check-square"></i>
+  <p>Last Check: <strong id="lastCheck"> 9:41:57 AM</strong></p>
+
+  <i class="fas fa-hourglass-half"></i>
+  <p>Event Running Time: <strong id="eventTime"> 00:00:05</strong></p>
+
+  <i class="fas fa-scroll"></i>
+  <p><strong>Latest Inject:</strong> <span id="latestInject"> VPN Lockdown (Due: 17:00)</span></p>
+</div>
+
   </div>
+
+  <footer>
+    <p>&copy; 2025 Jonathan Geisler. All rights reserved.</p>
+  </footer>
 
   <script src="scripts/scripts.js"></script>
 </body>

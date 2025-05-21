@@ -111,12 +111,12 @@ button:hover {
 
 /* Style nav links correctly */
 .topnav {
-  background-color: #0d1b2a;
-  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
   padding: 1rem;
-  text-align: center;
+  background-color: #0a1a2f;
 }
-
 .topnav a {
   color: #00f9ff;
   text-decoration: none;
@@ -132,3 +132,94 @@ button:hover {
   color: #00ffff;
   border-bottom: 2px solid #00f9ff;
 }
+
+.nav-button {
+  background-color: #00cfe8;
+  color: #000;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.nav-button:hover {
+  background-color: #00acc1;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #081828;
+  padding: 0.8rem 2rem;
+  box-shadow: 0 2px 8px rgba(0,255,255,0.1);
+  border-bottom: 1px solid #00f9ff44;
+}
+
+.navbar .brand-name {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #00f9ff;
+  margin-left: 0.5rem;
+  letter-spacing: 2px;
+}
+
+.nav-links a {
+  margin: 0 1rem;
+  text-decoration: none;
+  color: #e0f7fa;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: color 0.3s ease;
+}
+
+.nav-links a i {
+  color: #00f9ff;
+}
+
+.nav-links a:hover {
+  color: #00f9ff;
+  text-shadow: 0 0 5px #00f9ff;
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.info-panel {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.8rem 1rem;
+  margin: 2rem auto;
+  max-width: 600px;
+  padding: 1.5rem 2rem;
+  background: rgba(0, 249, 255, 0.05);
+  border: 1px solid rgba(0, 249, 255, 0.2);
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 249, 255, 0.08);
+  color: #e0f7fa;
+  font-size: 1.05rem;
+}
+
+.info-panel i {
+  color: #00f9ff;
+  font-size: 1.25rem;
+  margin-top: 0.15rem;
+}
+
+.info-panel p {
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+#latestInject {
+  font-weight: 500;
+  color: #ffffffd9;
+}
+
