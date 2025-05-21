@@ -29,29 +29,6 @@ async function loadStatus() {
   });
 }
 
-async function loadInjects() {
-  const res = await fetch("injects.json");
-  const data = await res.json();
-  const injectBody = document.querySelector("#injectTable tbody");
-  injectBody.innerHTML = "";
-
-  data.injects.forEach(inject => {
-    const row = document.createElement("tr");
-    row.innerHTML = `
-      <td>${inject.posted}</td>
-      <td>${inject.title}</td>
-      <td>${inject.due}</td>
-      <td>${inject.status}</td>
-      <td><button onclick="alert('Inject ${inject.id} submitted!')">Submit</button></td>
-    `;
-    injectBody.appendChild(row);
-  });
-}
-
-// Start and refresh every 3 seconds
+// Load status on page load
 loadStatus();
-loadInjects();
-setInterval(() => {
-  loadStatus();
-  loadInjects();
-}, 3000);
+setInterval(loadStatus, 3000); // Refresh every minute

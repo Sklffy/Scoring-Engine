@@ -1,44 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>About ATLANTIS</title>
-  <link rel="stylesheet" href="styles.css">
-  <link rel="icon" href="favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="favicon.png" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
-<!-- Font Awesome CDN -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <i class="fas fa-water"></i> <span class="brand-name">ATLANTIS</span>
+    </div>
+    <div class="nav-links">
+      <a href="index.html"><i class="fas fa-home"></i> Home</a>
+      <a href="about.html" class="active"><i class="fas fa-circle-info"></i> About</a>
+      <a href="status.html"><i class="fas fa-server"></i> Status</a>
+      <a href="injects.html"><i class="fas fa-bolt"></i> Injects</a>
+      <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+      <a href="admin.html"><i class="fas fa-lock"></i> Admin</a>
+    </div>
+  </nav>
 
-<!-- Navigation Bar -->
-<nav class="navbar">
-  <div class="nav-left">
-    <i class="fas fa-water"></i> <span class="brand-name">ATLANTIS</span>
-  </div>
-  <div class="nav-links">
-    <a href="index.html"><i class="fas fa-home"></i> Home</a>
-    <a href="about.html"><i class="fas fa-circle-info"></i> About</a>
-    <a href="status.html"><i class="fas fa-server"></i> Status</a>
-    <a href="injects.html"><i class="fas fa-bolt"></i> Injects</a>
-    <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
-    <a href="admin.html"><i class="fas fa-lock"></i> Admin</a>
-  </div>
-</nav>
+  <!-- Main Content -->
+  <section class="about-section">
+    <div class="about-container">
+      <h1 class="neon-text">About <span class="highlight">ATLANTIS</span></h1>
 
-  <div class="centered" style="max-width: 800px; margin: auto; padding-top: 2rem;">
-    <img src="ATLANTIS.png" alt="ATLANTIS Logo" class="logo small-logo" />
-    <h1>About ATLANTIS</h1>
-    <p style="font-size: 1.1rem; color: #a0cfdc; padding: 1rem 2rem;">
-      ATLANTIS Scoreboard was developed by <strong>Jonathan Geisler</strong> as a fully customized Blue Team competition platform.
-      It supports live service checks, uptime reporting, and inject grading.
-    </p>
-    <p style="font-size: 1rem; color: #00f9ff99;">
-      This scoreboard is inspired by tools like the DWAYNE-INATOR-5000 and built with HTML, CSS, JavaScript, and JSON.
-    </p>
-    <p style="margin-top: 1rem; font-size: 0.95rem; color: #00f9ff55;">
-      Version 1.0 • Created in 2025 • Liberty University Cyber
-    </p>
-    <a href="index.html"><button style="margin-top: 2rem;">← Back to Scoreboard</button></a>
-  </div>
+<div class="about-box">
+  <p>
+    <strong>ATLANTIS Scoreboard</strong> was created by <strong>Jonathan Geisler</strong> as a fully custom-built Blue Team competition platform designed for live security competitions and CTF-style events.
+  </p>
+  <p>
+    Born out of a passion for cybersecurity and visual excellence, ATLANTIS merges practical scoring with a sleek, futuristic interface that reflects the intensity and innovation of cyber defense teams.
+  </p>
+  <p>
+    The platform supports real-time service status checks, uptime monitoring, and inject management all with blazing-fast performance and intuitive layout, making it perfect for both competitors and judges.
+  </p>
+  <p class="inspired">
+    Inspired by platforms like the <span class="highlight">DWAYNE-INATOR-5000</span>, ATLANTIS is built using modern web technologies including
+    <span class="highlight">HTML</span>, <span class="highlight">CSS</span>, <span class="highlight">JavaScript</span>, <span class="highlight">C++</span>, and <span class="highlight">JSON</span>.
+  </p>
+
+      <div class="about-actions">
+        <a href="https://github.com/Sklffy" target="_blank" class="button-glow">
+          <i class="fab fa-github"></i> View GitHub
+        </a>
+        <a href="mailto:jdgeisler@gmail.com" class="button-glow secondary">
+          <i class="fas fa-envelope"></i> Contact Me
+        </a>
+      </div>
+    </div>
+  </section>
+   <footer>
+    <p>&copy; 2025 Jonathan Geisler. All rights reserved.</p>
+  </footer>
 </body>
 </html>
