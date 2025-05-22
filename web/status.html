@@ -6,12 +6,67 @@
   <title>ATLANTIS Scoreboard - Status View</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    .status-dashboard {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 2rem;
+      gap: 2rem;
+    }
+    .team-card {
+      background: #0c1c2c;
+      border: 2px solid #00f9ff55;
+      border-radius: 1rem;
+      width: 260px;
+      padding: 1.2rem;
+      box-shadow: 0 0 20px #00f9ff22;
+      text-align: left;
+    }
+    .team-card h3 {
+      color: #00f9ff;
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+    }
+    .service-status {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .service {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.4rem 0.6rem;
+      border-radius: 0.3rem;
+      background: #081828;
+    }
+    .Online {
+      color: #00ff99;
+    }
+    .Partial {
+      color: #ffcc00;
+    }
+    .Offline {
+      color: #ff3333;
+    }
+    .uptime-table, .inject-table {
+      margin: 2rem auto;
+      width: 90%;
+      border-collapse: collapse;
+    }
+    .uptime-table th, .uptime-table td, .inject-table th, .inject-table td {
+      padding: 0.75rem;
+      text-align: center;
+      border: 1px solid #00f9ff33;
+    }
+    .uptime-table th, .inject-table th {
+      background-color: #081828;
+      color: #00f9ff;
+    }
+  </style>
 </head>
 <body>
-<!-- Font Awesome CDN -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-
-<!-- Navigation Bar -->
 <nav class="navbar">
   <div class="nav-left">
     <i class="fas fa-water"></i> <span class="brand-name">ATLANTIS</span>
@@ -25,59 +80,70 @@
   </div>
 </nav>
 
-  <!-- Logo + Title -->
-  <img src="ATLANTIS.png" alt="ATLANTIS Logo" id="logo" />
-  <h1>ATLANTIS SCOREBOARD</h1>
+<img src="ATLANTIS.png" alt="ATLANTIS Logo" id="logo" />
+<h1 class="neon-text">ATLANTIS SCOREBOARD</h1>
 
-  <!-- Status Section -->
-  <h2>Status</h2>
-  <table id="statusTable" class="score-table">
-    <thead>
-      <tr>
-        <th>Team</th>
-        <th>DNS</th>
-        <th>FTP</th>
-        <th>SSH</th>
-        <th>HTTP</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  </table>
+<!-- Status Cards Section -->
+<h2>Status</h2>
+<div class="status-dashboard" id="statusCards">
+  <!-- Cards loaded dynamically by status.js -->
+</div>
 
-  <!-- Uptime Section -->
-  <h2>Uptime</h2>
-  <table id="uptimeTable" class="score-table">
-    <thead>
-      <tr>
-        <th>Team</th>
-        <th>DNS</th>
-        <th>FTP</th>
-        <th>SSH</th>
-        <th>HTTP</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  </table>
+<!-- Uptime Section -->
+<h2>Uptime</h2>
+<table id="uptimeTable" class="uptime-table">
+  <thead>
+    <tr>
+      <th>Team</th>
+      <th>DNS</th>
+      <th>FTP</th>
+      <th>SSH</th>
+      <th>HTTP</th>
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>
 
-  <!-- Injects Section -->
-  <h2>Injects</h2>
-  <table id="injectTable" class="inject-table">
-    <thead>
-      <tr>
-        <th>Posted</th>
-        <th>Inject Title</th>
-        <th>Due</th>
-        <th>Status</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  </table>
+<!-- Injects Section -->
+<h2>Injects</h2>
+<table id="injectTable" class="inject-table">
+  <thead>
+    <tr>
+      <th>Posted</th>
+      <th>Inject Title</th>
+      <th>Due</th>
+      <th>Status</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>
 
-  <!-- External Script -->
-  <script src="scripts/status.js"></script>
-   <footer>
-    <p>&copy; 2025 Jonathan Geisler. All rights reserved.</p>
-  </footer>
+<script src="scripts/status.js"></script>
+<script>
+  async function loadStatusCards() {
+    const res = await fetch("scores.json");
+    const data = await res.json();
+    const container = document.getElementById("statusCards");
+    data.teams.forEach(team => {
+      const card = document.createElement("div");
+      card.className = "team-card";
+      card.innerHTML = `
+        <h3>${team.name}</h3>
+        <div class="service-status">
+          <div class="service"><span>DNS</span><span class="${team.status?.dns?.toLowerCase() || 'Offline'}">${team.status?.dns?.toUpperCase() || 'UNKNOWN'}</span></div>
+          <div class="service"><span>FTP</span><span class="${team.status?.ftp?.toLowerCase() || 'Offline'}">${team.status?.ftp?.toUpperCase() || 'UNKNOWN'}</span></div>
+          <div class="service"><span>SSH</span><span class="${team.status?.ssh?.toLowerCase() || 'Offline'}">${team.status?.ssh?.toUpperCase() || 'UNKNOWN'}</span></div>
+          <div class="service"><span>HTTP</span><span class="${team.status?.http?.toLowerCase() || 'Offline'}">${team.status?.http?.toUpperCase() || 'UNKNOWN'}</span></div>
+        </div>
+      `;
+      container.appendChild(card);
+    });
+  }
+  loadStatusCards();
+</script>
+<footer>
+  <p>&copy; 2025 Jonathan Geisler. All rights reserved.</p>
+</footer>
 </body>
 </html>

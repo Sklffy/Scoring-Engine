@@ -2,13 +2,13 @@
     "lastUpdated": 1747844623,
     "teams": [
         {
-            "name": "Red Team",
+            "name": "Blue Team 1",
             "score": null,
             "status": "Offline",
             "uptime": 0
         },
         {
-            "name": "Blue Team",
+            "name": "Blue Team 2",
             "score": 10,
             "status": "Up",
             "uptime": 300
