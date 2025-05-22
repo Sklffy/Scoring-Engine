@@ -452,3 +452,136 @@ button:hover {
   transform: scale(1.08) rotate(2deg);
   filter: drop-shadow(0 0 15px #00f9ff) brightness(1.2);
 }
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  background-color: #081828;
+  color: #00f9ff;
+  font-family: monospace;
+  text-align: center;
+  padding: 8px 12px;
+  border-radius: 10px;
+  position: absolute;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 0 10px #00f9ff;
+  z-index: 999;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(-50%) translateY(-5px);
+}
+
+.tech-stack {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 10px;
+  padding: 5px;
+}
+
+.tech {
+  background-color: #081828;
+  color: #00f9ff;
+  padding: 6px 12px;
+  border-radius: 10px;
+  font-weight: bold;
+  font-family: monospace;
+  box-shadow: 0 0 8px #00f9ff;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.tech:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px #00f9ff;
+}
+
+.about-box {
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.8;
+  font-size: 1.05rem;
+  color: #d0faff;
+  text-align: left;
+  padding: 0 1rem;
+}
+
+.profile-link {
+  color: #00f9ff;
+  text-decoration: none;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+
+.profile-link:hover {
+  color: #00ffff;
+  text-shadow: 0 0 8px #00f9ff;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  opacity: 0;
+  width: auto;
+  background-color: #081828;
+  color: #00f9ff;
+  font-family: monospace;
+  text-align: center;
+  padding: 8px 12px;
+  border-radius: 10px;
+  position: absolute;
+  z-index: 10;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  box-shadow: 0 0 10px #00f9ff;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(-50%) translateY(-5px);
+}
+
+.linkedin-icon {
+  height: 18px;
+  width: 18px;
+  vertical-align: middle;
+  margin-right: 6px;
+  filter: brightness(0) saturate(100%) invert(45%) sepia(95%) saturate(638%) hue-rotate(150deg) brightness(104%) contrast(101%);
+}
+
+.profile-link a {
+  color: #00f9ff !important;
+  text-decoration: none;
+  font-weight: bold;
+  transition: text-shadow 0.2s ease;
+}
+
+.profile-link a:hover {
+  text-shadow: 0 0 10px #00f9ff;
+}
+
+/* Remove visited/active default colors */
+.profile-link a:visited,
+.profile-link a:active {
+  color: #00f9ff !important;
+}
