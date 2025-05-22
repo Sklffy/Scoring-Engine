@@ -7,62 +7,82 @@
   <link rel="stylesheet" href="styles.css" />
   <link rel="icon" href="favicon.png" />
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
-  
-<!-- Font Awesome CDN -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-<!-- Navigation Bar -->
-<nav class="navbar">
-  <div class="nav-left">
-    <i class="fas fa-water"></i> <span class="brand-name">ATLANTIS</span>
-  </div>
-  <div class="nav-links">
-    <a href="index.html"><i class="fas fa-home"></i> Home</a>
-    <a href="about.html"><i class="fas fa-circle-info"></i> About</a>
-    <a href="status.html"><i class="fas fa-server"></i> Status</a>
-    <a href="injects.html"><i class="fas fa-bolt"></i> Injects</a>
-    <a href="admin.html"><i class="fas fa-lock"></i> Admin</a>
-  </div>
-</nav>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <i class="fas fa-water"></i> <span class="brand-name">ATLANTIS</span>
+    </div>
+    <div class="nav-links">
+      <a href="index.html"><i class="fas fa-home"></i> Home</a>
+      <a href="about.html"><i class="fas fa-circle-info"></i> About</a>
+      <a href="status.html"><i class="fas fa-server"></i> Status</a>
+      <a href="injects.html"><i class="fas fa-bolt"></i> Injects</a>
+      <a href="admin.html"><i class="fas fa-lock"></i> Admin</a>
+    </div>
+  </nav>
 
-<img src="ATLANTIS.png" alt="ATLANTIS Logo" class="logo" />
+  <img src="ATLANTIS.png" alt="ATLANTIS Logo" class="logo" />
 
-
-
-
-  <!-- Main Content Wrapper -->
+  <!-- Main Content -->
   <div class="centered">
-    <!-- Logo -->
-
     <!-- Title -->
-  <h1 class="neon-text">ATLANTIS <span class="highlight">SCOREBOARD</span></h1>
+    <h1 class="neon-text">ATLANTIS <span class="highlight">SCOREBOARD</span></h1>
 
-<!-- Info Panel -->
-<div class="info-panel">
-  <div class="info-item">
-    <i class="fas fa-trophy"></i>
-    <span>Total Teams: <strong id="teamCount">2</strong></span>
-  </div>
-  <div class="info-item">
-    <i class="fas fa-check-square"></i>
-    <span>Last Check: <strong id="lastCheck">9:41:57 AM</strong></span>
-  </div>
-  <div class="info-item">
-    <i class="fas fa-hourglass-half"></i>
-    <span>Event Running Time: <strong id="eventTime">00:00:05</strong></span>
-  </div>
-  <div class="info-item">
-    <i class="fas fa-scroll"></i>
-    <span><strong>Latest Inject:</strong> <span id="latestInject">VPN Lockdown (Due: 17:00)</span></span>
-  </div>
-</div>
+    <!-- Teams Mini-Scoreboard -->
+    <div class="teams-panel" id="teamPanel">
+      <h2 class="glow-text"><i class="fas fa-users"></i> Teams</h2>
+      <div class="team-list" id="teamList">
+        <!-- Team info will be injected here -->
+      </div>
+    </div>
 
+    <!-- Info Panel -->
+    <div class="info-panel">
+      <div class="info-item">
+        <i class="fas fa-trophy"></i>
+        <span>Total Teams: <strong id="teamCount">2</strong></span>
+      </div>
+      <div class="info-item">
+        <i class="fas fa-check-square"></i>
+        <span>Last Check: <strong id="lastCheck">9:41:57 AM</strong></span>
+      </div>
+      <div class="info-item">
+        <i class="fas fa-hourglass-half"></i>
+        <span>Event Running Time: <strong id="eventTime">00:00:05</strong></span>
+      </div>
+      <div class="info-item">
+        <i class="fas fa-scroll"></i>
+        <span><strong>Latest Inject:</strong> <span id="latestInject">VPN Lockdown (Due: 17:00)</span></span>
+      </div>
+    </div>
   </div>
+
+  <!-- Footer -->
   <footer>
     <p>&copy; 2025 Jonathan Geisler. All rights reserved.</p>
   </footer>
+
+  <!-- Scoreboard Script -->
+  <script>
+    fetch("scores.json")
+      .then(res => res.json())
+      .then(data => {
+        const teamList = document.getElementById("teamList");
+        if (!teamList) return;
+
+        teamList.innerHTML = data.teams.map(team => `
+          <div class="team-box ${team.status}">
+            <strong>${team.name}</strong><br>
+            Score: ${team.score ?? 0}<br>
+            Status: ${team.status}
+          </div>
+        `).join('');
+      });
+  </script>
 
   <script src="scripts/scripts.js"></script>
 </body>

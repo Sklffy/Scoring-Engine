@@ -40,11 +40,12 @@ h2 {
 
 .score-table th,
 .score-table td,
-.inject-table th,
-.inject-table td {
-  padding: 1rem;
-  border: 1px solid #00bcd4;
-  color: #e0f7fa;
+.inject-table td,
+.inject-table th {
+  vertical-align: middle;
+  text-align: center;
+  font-size: 0.95rem;
+  line-height: 1.6;
 }
 
 .score-table th,
@@ -192,31 +193,44 @@ button:hover {
 }
 
 .info-panel {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 0.8rem 1rem;
   margin: 2rem auto;
   max-width: 600px;
-  padding: 1.5rem 2rem;
-  background: rgba(0, 249, 255, 0.05);
-  border: 1px solid rgba(0, 249, 255, 0.2);
+  background-color: rgba(0, 249, 255, 0.04);
   border-radius: 12px;
-  box-shadow: 0 0 20px rgba(0, 249, 255, 0.08);
-  color: #e0f7fa;
-  font-size: 1.05rem;
+  padding: 1.8rem 2rem;
+  border: 1px solid rgba(0, 249, 255, 0.2);
+  box-shadow: 0 0 12px rgba(0, 249, 255, 0.15), inset 0 0 8px rgba(0, 249, 255, 0.05);
+  font-family: "Courier New", monospace;
+  color: #d0faff;
 }
 
-.info-panel i {
-  color: #00f9ff;
-  font-size: 1.25rem;
-  margin-top: 0.15rem;
-}
-
-.info-panel p {
-  margin: 0;
+.info-item {
   display: flex;
   align-items: center;
+  gap: 12px;
+  margin: 1.2rem 0;
+  font-size: 0.95rem;
+  border-bottom: 1px solid rgba(0, 249, 255, 0.05);
+  padding-bottom: 0.8rem;
 }
+
+.info-item:last-child {
+  border-bottom: none;
+}
+
+.info-item i {
+  color: #00f9ff;
+  font-size: 1.1rem;
+  min-width: 20px;
+  text-shadow: 0 0 5px rgba(0, 249, 255, 0.4);
+}
+
+.info-item strong {
+  color: #ffffff;
+  font-weight: bold;
+}
+
+
 
 #latestInject {
   font-weight: 500;
@@ -310,13 +324,6 @@ button:hover {
   font-weight: 600;
 }
 
-.inject-form {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  align-items: center;
-}
-
 .inject-upload {
   margin-bottom: 0.5rem;
   display: block;
@@ -327,18 +334,17 @@ button:hover {
   color: #00f9ff;
 }
 .inject-form button {
-  background-color: #00c6ff;
-  border: none;
-  padding: 6px 12px;
-  border-radius: 4px;
-  color: black;
-  font-weight: bold;
-  cursor: pointer;
+  width: 100px;
+  text-align: center;
 }
-
 
 .inject-form button:hover {
   background-color: #00f9ff;
+}
+
+.inject-table tr:hover {
+  background-color: #0b2437;
+  box-shadow: inset 0 0 10px #00f9ff44;
 }
 
 .inject-form {
@@ -351,92 +357,64 @@ button:hover {
 .inject-upload {
   display: none;
 }
-
 .inject-form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.3rem;
-  padding: 0.5rem;
-  background-color: #0e273c;
-  border-radius: 10px;
-  box-shadow: 0 0 12px #00f9ff44;
-  margin-top: 0.2rem;
+  gap: 8px;
+}
+
+.file-label {
+  background-color: #00f9ff;
+  color: #081828;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 8px #00f9ff;
+  transition: box-shadow 0.2s ease;
+}
+
+.file-label:hover {
+  box-shadow: 0 0 12px #00f9ff;
 }
 
 .inject-upload {
   display: none;
 }
 
-.file-label {
-  background: #00f9ff;
-  color: #081828;
-  padding: 0.4rem 1rem;
-  font-weight: 600;
-  font-size: 0.9rem;
-  border: none;
-  border-radius: 999px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-}
-
-.file-label:hover {
-  background-color: #00d8e0;
-}
-
 .file-name {
-  font-size: 0.85rem;
-  font-style: italic;
-  color: #aaa;
-  text-align: center;
-  max-width: 160px;
-  overflow-wrap: break-word;
+  font-size: 0.75rem;
+  color: #00eaff;
+  font-family: monospace;
+  max-width: 180px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.inject-form button {
+  background-color: transparent;
+  border: 2px solid #00f9ff;
+  color: #00f9ff;
+  padding: 5px 12px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease;
+}
+.inject-form button:disabled {
+  background-color: #00f9ff33;
+  color: #00f9ff88;
+  border-color: #00f9ff55;
+  cursor: not-allowed;
+  box-shadow: none;
 }
 
-.inject-form button {
-  background-color: #00c1d4;
-  color: #081828;
-  border: none;
-  border-radius: 999px;
-  padding: 0.35rem 1.2rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.3s ease;
-  font-size: 0.9rem;
-}
 
 .inject-form button:hover {
-  background-color: #00a8b8;
+  box-shadow: 0 0 8px #00f9ff;
 }
 
-.info-panel {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  background-color: #0b1e2e;
-  padding: 1.5rem 2rem;
-  margin: 2rem auto;
-  max-width: 600px;
-  border-radius: 12px;
-  box-shadow: 0 0 10px #00f9ff44;
-  color: #ccefff;
-}
-
-.info-item {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  font-size: 1.1rem;
-}
-
-.info-item i {
-  color: #00f9ff;
-  font-size: 1.2rem;
-  min-width: 24px;
-}
 
 .logo {
   height: 100px;
@@ -584,4 +562,93 @@ button:hover {
 .profile-link a:visited,
 .profile-link a:active {
   color: #00f9ff !important;
+}
+
+.mini-scoreboard {
+  margin: 2rem auto;
+  padding: 1rem 2rem;
+  max-width: 500px;
+  background-color: #081828;
+  border-radius: 12px;
+  border: 1px solid #00f9ff33;
+  box-shadow: 0 0 12px #00f9ff22;
+  color: #00f9ff;
+  text-align: left;
+}
+
+.teams-panel {
+  max-width: 700px;
+  margin: 2rem auto;
+  background: rgba(0, 249, 255, 0.05);
+  border: 1px solid rgba(0, 249, 255, 0.2);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 0 20px rgba(0, 249, 255, 0.1);
+  text-align: center;
+}
+
+.teams-panel h2 {
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  color: #00f9ff;
+  text-shadow: 0 0 10px #00f9ff;
+}
+
+.team-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.team-box {
+  background: rgba(0, 249, 255, 0.1);
+  border: 1px solid rgba(0, 249, 255, 0.3);
+  border-radius: 8px;
+  padding: 1rem;
+  font-family: monospace;
+  font-size: 0.9rem;
+  color: #00f9ff;
+  box-shadow: 0 0 10px rgba(0, 249, 255, 0.1);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.team-box:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 15px rgba(0, 249, 255, 0.3);
+}
+
+.team-box.Up {
+  border-left: 5px solid #00ff99;
+}
+
+.team-box.Down,
+.team-box.Offline {
+  border-left: 5px solid #ff6666;
+  color: #ff6666;
+}
+
+.team-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.team-header i {
+  color: #00f9ff;
+}
+
+.team-details {
+  margin-top: 0.8rem;
+  padding-top: 0.6rem;
+  border-top: 1px dashed #00f9ff55;
+  display: none;
+  color: #a0f0ff;
+  font-size: 0.85rem;
+}
+
+.team-details.visible {
+  display: block;
 }

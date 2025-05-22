@@ -26,20 +26,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Injects table
   if (injectTable) {
-    fetch("injects.json")
-      .then(r => r.json())
-      .then(data => {
-        injectTable.innerHTML = data.injects.map(inj => `
-          <tr>
-            <td>${inj.posted}</td>
-            <td>${inj.title}</td>
-            <td>${inj.due}</td>
-            <td>${inj.status}</td>
-            <td><button onclick="alert('Inject ${inj.id} submitted!')">Submit</button></td>
-          </tr>
-        `).join('');
-      });
+    loadInjects();
   }
+
 });
 
 function loadInjects() {
@@ -59,7 +48,7 @@ function loadInjects() {
           <td>${inject.status}</td>
           <td>
             <form class="inject-form" onsubmit="handleInjectSubmit(event, ${inject.id})">
-              <label for="fileInput1" class="file-label">
+              <label for="${fileInputId}" class="file-label">
                 <i class="fas fa-paperclip"></i> Choose File
               </label>
               <input type="file" id="${fileInputId}" name="file" class="inject-upload" onchange="showFileName(this)" required />
@@ -73,25 +62,41 @@ function loadInjects() {
     });
 }
 
+
 function showFileName(input) {
-  const span = input.nextElementSibling;
-  span.textContent = input.files[0]?.name || "No file selected";
+  const fileName = input.files[0]?.name || "No file selected";
+  const fileNameDisplay = input.parentElement.querySelector(".file-name");
+  fileNameDisplay.textContent = fileName;
 }
+
 
 
 // Submit handler (simulated)
 function handleInjectSubmit(event, injectId) {
   event.preventDefault();
+
   const form = event.target;
-  const file = form.querySelector('input[type="file"]').files[0];
+  const fileInput = form.querySelector('input[type="file"]');
+  const file = fileInput.files[0];
 
   if (!file) {
     alert("Please select a file to upload.");
     return;
   }
 
+  // Simulate successful upload
   alert(`Inject ${injectId} submitted: ${file.name}`);
+
+  // Disable UI after submission
+  form.querySelector("button").textContent = "Uploaded";
+  form.querySelector("button").disabled = true;
+  form.querySelector("button").style.opacity = "0.6";
+
+  fileInput.disabled = true;
+  form.querySelector(".file-label").style.opacity = "0.5";
+  form.querySelector(".file-label").style.cursor = "not-allowed";
 }
+
 
 document.addEventListener("DOMContentLoaded", () => {
   if (document.getElementById("eventTime")) {
