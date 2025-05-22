@@ -42,7 +42,18 @@
 
 ## 📁 Repository Structure
 
-<pre> ## 📁 Repository Structure ``` src/ # Core C++ backend ├── main.cpp web/ # HTML/CSS/JS frontend ├── index.html ├── status.html ├── injects.html config/ ├── dwayne.conf # Main TOML configuration scripts/ ├── status.js # Dynamic content updates scores.json # Runtime score output README.md ``` </pre>
+src/ # Core C++ backend
+└── main.cpp
+web/ # HTML/CSS/JS frontend
+├── index.html
+├── status.html
+└── injects.html
+config/ # Configuration files
+└── dwayne.conf # Main TOML configuration
+scripts/ # JS for dynamic content
+└── status.js # Dynamic content updates
+scores.json # Runtime score output
+README.md
 
 
 * * *
