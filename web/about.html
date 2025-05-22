@@ -7,8 +7,92 @@
   <link rel="icon" href="favicon.png" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    .logo {
+      display: block;
+      margin: 20px auto 0 auto;
+      height: 120px;
+      width: auto;
+      filter: drop-shadow(0 0 15px #00f9ffcc);
+      transition: transform 0.3s ease;
+    }
+
+    .logo:hover {
+      transform: scale(1.05) rotate(1deg);
+      filter: drop-shadow(0 0 20px #00f9ff) brightness(1.3);
+    }
+
+    .about-section {
+      text-align: center;
+      margin-top: 0;
+    }
+
+    .about-container {
+      max-width: 800px;
+      margin: auto;
+      padding: 2rem;
+    }
+
+    .about-box {
+      background: #081828;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 0 15px #00f9ff33;
+      color: #fff;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    .highlight {
+      color: #00f9ff;
+      font-weight: bold;
+    }
+
+    .neon-text {
+      color: #fff;
+      font-size: 2.5rem;
+      font-weight: bold;
+      text-shadow: 0 0 10px #00f9ff, 0 0 20px #00f9ff;
+      margin-bottom: 1.5rem;
+    }
+
+    .about-actions {
+      margin-top: 2rem;
+    }
+
+    .button-glow {
+      display: inline-block;
+      margin: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      background-color: #00f9ff;
+      color: #000;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 10px;
+      transition: background-color 0.3s, box-shadow 0.3s;
+      box-shadow: 0 0 10px #00f9ff;
+    }
+
+    .button-glow:hover {
+      background-color: #00d5dd;
+      box-shadow: 0 0 20px #00f9ff;
+    }
+
+    .button-glow.secondary {
+      background-color: #081828;
+      color: #00f9ff;
+      border: 1px solid #00f9ff;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      color: #888;
+    }
+  </style>
 </head>
 <body>
+
 <!-- Navigation Bar -->
 <nav class="navbar">
   <div class="nav-left">
@@ -16,33 +100,34 @@
   </div>
   <div class="nav-links">
     <a href="index.html"><i class="fas fa-home"></i> Home</a>
-    <a href="about.html"><i class="fas fa-circle-info"></i> About</a>
+    <a href="about.html" class="active"><i class="fas fa-circle-info"></i> About</a>
     <a href="status.html"><i class="fas fa-server"></i> Status</a>
     <a href="injects.html"><i class="fas fa-bolt"></i> Injects</a>
     <a href="admin.html"><i class="fas fa-lock"></i> Admin</a>
   </div>
 </nav>
 
-<img src="ATLANTIS.png" alt="ATLANTIS Logo" id="logo" />
+<!-- Logo Centered -->
+<img src="ATLANTIS.png" alt="ATLANTIS Logo" class="logo" />
 
-  <!-- Main Content -->
-  <section class="about-section">
-          <h1 class="neon-text">About <span class="highlight">ATLANTIS</span></h1>
-    <div class="about-container">
-<div class="about-box">
-  <p>
-    <strong>ATLANTIS Scoreboard</strong> was created by <strong>Jonathan Geisler</strong> as a fully custom-built Blue Team competition platform designed for live security competitions and CTF-style events.
-  </p>
-  <p>
-    Born out of a passion for cybersecurity and visual excellence, ATLANTIS merges practical scoring with a sleek, futuristic interface that reflects the intensity and innovation of cyber defense teams.
-  </p>
-  <p>
-    The platform supports real-time service status checks, uptime monitoring, and inject management all with blazing-fast performance and intuitive layout, making it perfect for both competitors and judges.
-  </p>
-  <p class="inspired">
-    Inspired by platforms like the <span class="highlight">DWAYNE-INATOR-5000</span>, ATLANTIS is built using modern web technologies including
-    <span class="highlight">HTML</span>, <span class="highlight">CSS</span>, <span class="highlight">JavaScript</span>, <span class="highlight">C++</span>, and <span class="highlight">JSON</span>.
-  </p>
+<!-- Main Content -->
+<section class="about-section">
+  <h1 class="neon-text">About <span class="highlight">ATLANTIS</span></h1>
+  <div class="about-container">
+    <div class="about-box">
+      <p>
+        <strong>ATLANTIS Scoreboard</strong> was created by <strong>Jonathan Geisler</strong> as a fully custom-built Blue Team competition platform designed for live security competitions and CTF-style events.
+      </p>
+      <p>
+        Born out of a passion for cybersecurity and visual excellence, ATLANTIS merges practical scoring with a sleek, futuristic interface that reflects the intensity and innovation of cyber defense teams.
+      </p>
+      <p>
+        The platform supports real-time service status checks, uptime monitoring, and inject management all with blazing-fast performance and intuitive layout, making it perfect for both competitors and judges.
+      </p>
+      <p class="inspired">
+        Inspired by platforms like the <span class="highlight">DWAYNE-INATOR-5000</span>, ATLANTIS is built using modern web technologies including
+        <span class="highlight">HTML</span>, <span class="highlight">CSS</span>, <span class="highlight">JavaScript</span>, <span class="highlight">C++</span>, and <span class="highlight">JSON</span>.
+      </p>
 
       <div class="about-actions">
         <a href="https://github.com/Sklffy" target="_blank" class="button-glow">
@@ -53,9 +138,10 @@
         </a>
       </div>
     </div>
-  </section>
-   <footer>
-    <p>&copy; 2025 Jonathan Geisler. All rights reserved.</p>
-  </footer>
+  </div>
+</section>
+<footer>
+  <p>&copy; 2025 Jonathan Geisler. All rights reserved.</p>
+</footer>
 </body>
 </html>

@@ -1,21 +1,52 @@
-# ATLANTIS Scoreboard
+# 🌊 ATLANTIS Scoreboard
 
-A mythic, C++-powered scoring engine for cyber competitions.
+> *"For those who defend the digital seas."*  
+> A sleek, C++-powered cyber competition scoring engine inspired by the mythos of Atlantis.
 
-**ATLANTIS-Scoreboard** brings oceanic control to competitive cybersecurity. Inspired by the myth of the sunken kingdom, it’s designed for elegant scoring, team-based service checks, and competition tracking — with power worthy of Poseidon.
+**ATLANTIS Scoreboard** is a mythic, modern, and modular scoring platform built for collegiate cyber competitions, red vs. blue exercises, and CTF-style inject management. It channels the commanding energy of Poseidon to deliver real-time service checks, team uptime scoring, and inject tracking through a stunning, Greek-inspired UI.
 
-## Features
-- Configurable service checks (SSH, Web, DNS, etc.)
-- TOML-based configuration (dwayne.conf)
-- Greek-themed scoring UI
-- Inject and delayed check support
-- SLA tracking, uptime scoring, and purple team persistence
+* * *
 
-## Build
-```bash
-g++ -std=c++17 -o atlantis.exe src/main.cpp
-./atlantis
-==========
-# Atlantis
-Scoreboard
+## ⚙️ Features
 
+- ✅ **Multi-Service Checks**  
+    Score SSH, HTTP, DNS, FTP, and more with configurable checks.
+    
+- 🧭 **TOML-Based Config (dwayne.conf)**  
+    Human-readable, clean, and extensible configuration format.
+    
+- 💡 **Inject System**  
+    Time-based injects with file upload handling and deadlines.
+    
+- 📊 **SLA & Uptime Tracking**  
+    Fair and real-time scoring based on service-level agreements.
+    
+- 🧠 **Purple Team & Persistence Support**  
+    Evaluate recovery performance with offline detection and uptime weighting.
+    
+- 🏛️ **Greek-Themed UI**  
+    Stylish, glowing Matrix + mythology aesthetic using HTML/CSS/JS.
+    
+
+* * *
+
+## 🚀 Quick Start
+
+### 🛠️ Build Instructions
+
+`g++ -std=c++17 -o atlantis.exe src/main.cpp./atlantis`
+
+> Requires: GCC or Clang, C++17 support.
+
+* * *
+
+## 📁 Repository Structure
+
+`├── src/ # Core C++ backend│ └── main.cpp├── web/ # HTML/CSS/JS frontend│ ├── index.html│ ├── status.html│ └── injects.html├── config/│ └── dwayne.conf # Main TOML configuration├── scripts/│ └── status.js # Dynamic content updates├── scores.json # Runtime score output└── README.md`
+
+* * *
+
+## 📜 License
+
+MIT License © 2025 Jonathan Geisler  
+*“Command the currents. Defend the realm.”*

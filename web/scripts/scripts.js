@@ -59,9 +59,9 @@ function loadInjects() {
           <td>${inject.status}</td>
           <td>
             <form class="inject-form" onsubmit="handleInjectSubmit(event, ${inject.id})">
-<label for="fileInput1" class="file-label">
-  <i class="fas fa-paperclip"></i> Choose File
-</label>
+              <label for="fileInput1" class="file-label">
+                <i class="fas fa-paperclip"></i> Choose File
+              </label>
               <input type="file" id="${fileInputId}" name="file" class="inject-upload" onchange="showFileName(this)" required />
               <span class="file-name">No file selected</span>
               <button type="submit">Upload</button>
