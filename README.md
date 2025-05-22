@@ -54,7 +54,7 @@
 │ └── status.js # Dynamic content updates
 ├── scores.json # Runtime score output
 └── README.md
-
+'''
 * * *
 
 ## 📜 License
