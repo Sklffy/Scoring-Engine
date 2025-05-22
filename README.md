@@ -44,7 +44,7 @@
 ```
 ├── src/ # Core C++ backend
 │ └── main.cpp
-├── web/ # HTML/CSS/JS frontend``
+├── web/ # HTML/CSS/JS frontend
 │ ├── index.html
 │ ├── status.html
 │ └── injects.html
@@ -53,8 +53,8 @@
 ├── scripts/
 │ └── status.js # Dynamic content updates
 ├── scores.json # Runtime score output
-└── README.md
-'''
+└── README.md'''
+
 * * *
 
 ## 📜 License
